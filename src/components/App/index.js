@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Icon, Menu, Form, TextArea, Popup, Button
+  Icon, Menu, Form, TextArea, Popup, Button, Modal,
 } from 'semantic-ui-react';
 
 // == Import
@@ -20,6 +20,7 @@ const App = () => {
   const [PlayerPwned, setPlayerPwned] = useState(false);
   const [logs, setlogs] = useState(false);
   const [PlayerDefeat, setPlayerDefeat] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (PlayerOne === 0) {
@@ -78,27 +79,44 @@ const App = () => {
         </div>
       ) : null }
       <div className="Game">
-        <Button
-          inverted
+
+        <Modal
+          basic
+          onClose={() => setOpen(false)}
+          onOpen={() => setOpen(true)}
+          open={open}
           size="small"
-          color="yellow"
-          fluid
-          onClick={() => {
-            const result = confirm(`Tu concède ${PlayerOneName} ?`);
-            if (result === true) {
-              setPlayerTwoScore(PlayerTwoScore += 1);
-              setGameAction([
-                ...GameAction,
-                `${PlayerOneName} concède face à ${PlayerTwoName}! `]);
-              setPlayerPwned(true);
-              setTimeout(() => {
-                setPlayerPwned(false);
-              }, 7000);
-              setGameNumber(GameNumber += 1);
-            }
-          }}
-        >Concéder
-        </Button>
+          centered
+          trigger={(
+            <Button
+              inverted
+              size="small"
+              color="yellow"
+              fluid
+              onClick={() => {
+                const result = confirm(`Tu concède ${PlayerOneName} ?`);
+                if (result === true) {
+                  setPlayerTwoScore(PlayerTwoScore += 1);
+                  setGameAction([
+                    ...GameAction,
+                    `${PlayerOneName} concède face à ${PlayerTwoName}! `]);
+                  setPlayerPwned(true);
+                  setTimeout(() => {
+                    setPlayerPwned(false);
+                  }, 7000);
+                  setGameNumber(GameNumber += 1);
+                }
+              }}
+            >Concéder
+            </Button>
+)}
+        ><iframe src="https://giphy.com/embed/6tZsIBl8VMieveHImW" width="480" height="391" frameBorder="0" className="Pwned" allowFullScreen />
+          <Modal.Actions>
+            <Button color="green" inverted onClick={() => setOpen(false)}>
+              <Icon name="checkmark" /> Nouvelle partie
+            </Button>
+          </Modal.Actions>
+        </Modal>
         <Popup
           on="click"
           position="top center"
@@ -138,8 +156,7 @@ const App = () => {
             }}
           />
         </div>
-        { PlayerPwned ? <iframe src="https://giphy.com/embed/6tZsIBl8VMieveHImW" width="480" height="391" frameBorder="0" class="Pwned" allowFullScreen></iframe>
-          : <div>_______________________</div> }
+        <p>____________________</p>
         <p className="PlayerTwo">
           <Icon
             name="chevron circle left"
