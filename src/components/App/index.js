@@ -79,7 +79,6 @@ const App = () => {
         </div>
       ) : null }
       <div className="Game">
-
         <Modal
           basic
           onClose={() => setOpen(false)}
@@ -197,28 +196,44 @@ const App = () => {
 )}
           trigger={<p className="player">{PlayerTwoName}</p>}
         />
-        <Button
-          name="handshake outline"
-          color="yellow"
+        <Modal
+          basic
+          onClose={() => setOpen(false)}
+          onOpen={() => setOpen(true)}
+          open={open}
           size="small"
-          fluid
-          inverted
-          onClick={() => {
-            const result = confirm(`Tu concède ${PlayerTwoName} ?`);
-            if (result === true) {
-              setPlayerOneScore(PlayerOneScore += 1);
-              setGameAction([
-                ...GameAction,
-                `${PlayerTwoName} concède face à ${PlayerOneName}! `]);
-              setPlayerPwned(true);
-              setTimeout(() => {
-                setPlayerPwned(false);
-              }, 7000);
-              setGameNumber(GameNumber += 1);
-            }
-          }}
-        >Concéder
-        </Button>
+          centered
+          trigger={(
+            <Button
+              color="yellow"
+              size="small"
+              fluid
+              inverted
+              onClick={() => {
+                const result = confirm(`Tu concède ${PlayerTwoName} ?`);
+                if (result === true) {
+                  setPlayerOneScore(PlayerOneScore += 1);
+                  setGameAction([
+                    ...GameAction,
+                    `${PlayerTwoName} concède face à ${PlayerOneName}! `]);
+                  setPlayerPwned(true);
+                  setTimeout(() => {
+                    setPlayerPwned(false);
+                  }, 7000);
+                  setGameNumber(GameNumber += 1);
+                }
+              }}
+            >Concéder
+            </Button>
+)}
+        ><iframe src="https://giphy.com/embed/6tZsIBl8VMieveHImW" width="480" height="391" frameBorder="0" className="Pwned" allowFullScreen />
+          <Modal.Actions>
+            <Button color="green" inverted onClick={() => setOpen(false)}>
+              <Icon name="checkmark" /> Nouvelle partie
+            </Button>
+          </Modal.Actions>
+        </Modal>
+
       </div>
       <Menu inverted secondary icon="labeled" className="menu bottom">
         <Menu.Item
