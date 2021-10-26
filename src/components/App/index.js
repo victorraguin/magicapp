@@ -103,12 +103,7 @@ const App = () => {
   return (
     <div className="Bg">
       <div className="App">
-        { logs ? (
-          <div className="Game logs">
-            <p>{PlayerOneName} {PlayerOneScore} - {PlayerTwoScore} {PlayerTwoName}</p>
-            { GameAction.map((item, index) => (<p>Partie {index + 1} : {item}</p>))}
-          </div>
-        ) : <div className="Game logs"> <p>{PlayerOneScore} - {PlayerTwoScore}</p> </div> }
+        
         <div className="Game">
           <Modal
             basic
@@ -177,15 +172,7 @@ const App = () => {
               </Form>
 )}
             trigger={(
-              <div className="player">{PlayerOneName}
-                <br /><Icon
-                  name="edit"
-                  size="tiny"
-                  link
-                  circular
-                  inverted
-                />
-              </div>
+              <div className="player">{PlayerOneName}</div>
         )}
           />
           <div className="PlayerOne">
@@ -205,7 +192,7 @@ const App = () => {
               onClick={handleClickCountMore}
             />
           </div>
-          <div className="divider">__________________</div>
+          <div className="divider">_______________________</div>
           <p className="PlayerTwo">
             <Icon
               name="chevron circle left"
@@ -245,14 +232,7 @@ const App = () => {
               </Form>
 )}
             trigger={(
-              <div className="player"><Icon
-                name="edit"
-                size="tiny"
-                link
-                circular
-                inverted
-              /><br />{PlayerTwoName}
-              </div>
+              <div className="player">{PlayerTwoName}</div>
 )}
           />
           <Modal
@@ -334,6 +314,12 @@ const App = () => {
           </Menu.Item>
         </Menu>
       </div>
+      { logs ? (
+          <div className="Game logs">
+            <p>{PlayerOneName} {PlayerOneScore} - {PlayerTwoScore} {PlayerTwoName}</p>
+            { GameAction.map((item, index) => (<p>Partie {index + 1} : {item}</p>))}
+          </div>
+        ) : <div className="Game logs"> <p>{PlayerOneScore} - {PlayerTwoScore}</p> </div> }
     </div>
   );
 };
