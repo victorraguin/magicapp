@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Zen+Kaku+Gothic+Antique&display=swap');
+
 .Bg {
   background-color: #111316;
   background: no-repeat url("https://media.magic.wizards.com/images/wallpaper/sebm_sl2_1920x1080_wallpaper.jpg");
@@ -28,6 +30,7 @@
   padding: 1em;
   max-width: 380px;
   margin-top: 3em;
+  font-family: 'Lato', sans-serif;
 }
 
 .PlayerOne {
@@ -52,6 +55,10 @@
 .divider {
   display:inline-block;
   margin: 0.5em 0 1em 0em;
+}
+
+.VaincuButton {
+  margin: 1em;
 }
 
 p {
@@ -102,3 +109,9 @@ color: red;
 font-size: 20px;
 margin: 0;
 }
+
+.Message {
+  font-size: 15px;
+  font-style: italic;
+}
+
