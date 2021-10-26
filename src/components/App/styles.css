@@ -46,15 +46,16 @@
     bottom: 0;
 }
 
+
+.ui.labeled.icon.menu {
+  text-align: center;
+  background-color: #111316 !important;
+}
+
 .ui.secondary.inverted.menu a.item {
   font-size: 18px;
   font-weight: 700;
   margin-top: 0em !important;
-}
-
-.ui.labeled.icon.menu {
-  text-align: center;
-  background-color: #111316;
 }
 
 .PlayerTwo {
