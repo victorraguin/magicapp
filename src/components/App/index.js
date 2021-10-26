@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Icon, Menu, Form, TextArea, Popup,
+  Icon, Menu, Form, TextArea, Popup, Button
 } from 'semantic-ui-react';
 
 // == Import
@@ -28,7 +28,7 @@ const App = () => {
         setPlayerTwoScore(PlayerTwoScore += 1);
         setGameAction([
           ...GameAction,
-          `${{ PlayerTwoName }} a poutré ${PlayerOneName}, ${PlayerTwo} à 0`]);
+          `${PlayerTwoName} a poutré ${PlayerOneName}, ${PlayerTwo} à 0`]);
         setGameNumber(GameNumber += 1);
         if (GamePlayed === 'duel commander') {
           setPlayerOne(20);
@@ -78,11 +78,11 @@ const App = () => {
         </div>
       ) : null }
       <div className="Game">
-        <Icon
-          name="handshake outline"
+        <Button
           inverted
           size="small"
-          color="orange"
+          color="yellow"
+          fluid
           onClick={() => {
             const result = confirm(`Tu concède ${PlayerOneName} ?`);
             if (result === true) {
@@ -97,7 +97,8 @@ const App = () => {
               setGameNumber(GameNumber += 1);
             }
           }}
-        />
+        >Concéder
+        </Button>
         <Popup
           on="click"
           position="top center"
@@ -137,7 +138,6 @@ const App = () => {
             }}
           />
         </div>
-        { PlayerPwned ? <p className="Pwned">Poutré. </p> : null }
         { PlayerPwned ? <iframe src="https://giphy.com/embed/6tZsIBl8VMieveHImW" width="480" height="391" frameBorder="0" class="Pwned" allowFullScreen></iframe>
           : <div>_______________________</div> }
         <p className="PlayerTwo">
@@ -180,10 +180,12 @@ const App = () => {
 )}
           trigger={<p className="player">{PlayerTwoName}</p>}
         />
-        <Icon
+        <Button
           name="handshake outline"
-          color="orange"
+          color="yellow"
           size="small"
+          fluid
+          inverted
           onClick={() => {
             const result = confirm(`Tu concède ${PlayerTwoName} ?`);
             if (result === true) {
@@ -198,7 +200,8 @@ const App = () => {
               setGameNumber(GameNumber += 1);
             }
           }}
-        />
+        >Concéder
+        </Button>
       </div>
       <Menu inverted secondary icon="labeled" className="menu bottom">
         <Menu.Item
