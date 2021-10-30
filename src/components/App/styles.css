@@ -3,9 +3,9 @@
 .Bg {
   background-color: #111316;
   background: no-repeat url("https://media.magic.wizards.com/images/wallpaper/sebm_sl2_1920x1080_wallpaper.jpg");
-  position: fixed; 
   width: 100%;
   height: 100%;
+  position:absolute;
 }
 
 .App {
@@ -29,7 +29,7 @@
   border-radius: 20px;
   padding: 1em;
   max-width: 380px;
-  margin-top: 3em;
+  margin-top: 2em;
   font-family: 'Lato', sans-serif;
 }
 
@@ -39,7 +39,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: normal;
-  font-size: 30px;;
+  font-size: 30px;
+  transform: rotate(180deg);
 }
 
 .menu {
@@ -86,7 +87,17 @@ p {
   font-size: 30px;
 }
 
-.player {
+.player1 {
+  font-size: 30px;
+  margin: 1em 0 1em 0em;
+  transform: rotate(180deg);
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.player2 {
   font-size: 30px;
   margin: 1em 0 1em 0em;
 }

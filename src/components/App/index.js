@@ -22,7 +22,8 @@ const App = () => {
   const [PlayerDefeat, setPlayerDefeat] = useState(false);
   const [open, setOpen] = useState(false);
   const [openVaincu, setOpenVaincu] = useState(false);
-  let [message, setMessage] = useState('Pensez à changer vos pseudos');
+  const [openPwned, setOpenPwned] = useState(false);
+  const [message, setMessage] = useState('Pensez à changer vos pseudos');
 
   function handleClickCountMore(e) {
     console.log(e.target.id);
@@ -101,6 +102,21 @@ const App = () => {
   useEffect(() => {
     if (PlayerTwoScore === 3) {
       setPlayerDefeat(true);
+      console.log('true');
+        <Modal
+          basic
+          onClose={() => setOpenPwned(false)}
+          onOpen={() => setOpenPwned(true)}
+          open={PlayerDefeat}
+          size="small"
+          centered
+        ><iframe src="https://giphy.com/embed/6tZsIBl8VMieveHImW" width="480" height="391" frameBorder="0" className="Pwned" allowFullScreen />
+          <Modal.Actions>
+            <Button color="green" inverted onClick={() => setOpen(false)}>
+              <Icon name="checkmark" /> Ok 3
+            </Button>
+          </Modal.Actions>
+        </Modal>;
     }
   }, [PlayerTwoScore]);
 
@@ -108,7 +124,7 @@ const App = () => {
     <div className="Bg">
       <div className="App">
         <div className="Game">
-{/*           <Modal
+          {/*           <Modal
             basic
             onClose={() => setOpenVaincu(false)}
             onOpen={() => setOpenVaincu(true)}
@@ -165,6 +181,7 @@ const App = () => {
                 color="yellow"
                 fluid
                 circular
+                className="rotate"
                 onClick={() => {
                   const result = confirm(`Tu concède ${PlayerOneName} ?`);
                   if (result === true) {
@@ -202,6 +219,7 @@ const App = () => {
           <Popup
             on="click"
             position="top center"
+            className="rotate"
             size="tiny"
             content={(
               <Form>
@@ -210,6 +228,7 @@ const App = () => {
                   onChange={(e) => {
                     if (PlayerOneName.length < 20) {
                       setPlayerOneName(e.target.value);
+                      setMessage('');
                     }
                     else {
                       return setPlayerTwoName('Joueur 1');
@@ -220,7 +239,7 @@ const App = () => {
               </Form>
 )}
             trigger={(
-              <div className="player">{PlayerOneName}</div>
+              <div className="player1">{PlayerOneName}</div>
         )}
           />
           <div className="PlayerOne">
@@ -270,6 +289,7 @@ const App = () => {
                   onChange={(e) => {
                     if (PlayerTwoName.length < 20) {
                       setPlayerTwoName(e.target.value);
+                      setMessage('');
                     }
                     else {
                       return setPlayerTwoName('Joueur 2');
@@ -280,7 +300,7 @@ const App = () => {
               </Form>
 )}
             trigger={(
-              <div className="player">{PlayerTwoName}</div>
+              <div className="player2">{PlayerTwoName}</div>
 )}
           />
           <Modal
@@ -368,8 +388,11 @@ const App = () => {
           <p>{PlayerOneScore} - {PlayerTwoScore}</p>
           { GameAction.map((item, index) => (<p>Partie {index + 1} : {item}</p>))}
         </div>
-      ) : <div className="Game logs"> <p>{PlayerOneScore} - {PlayerTwoScore}</p>
-      <p className="Message">{message}</p> </div> }
+      ) : (
+        <div className="Game logs"> <p>{PlayerOneScore} - {PlayerTwoScore}</p>
+          <p className="Message">{message}</p>
+        </div>
+      ) }
     </div>
   );
 };
