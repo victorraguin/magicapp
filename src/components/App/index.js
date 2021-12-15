@@ -59,11 +59,11 @@ const App = () => {
     if (PlayerOne === 0) {
       const result = confirm(`Hey ${PlayerOneName} est-ce que tu as perdu?`);
       if (result === true) {
-        setMessage(`${PlayerTwoName} a gagné la dernière game`);
+        setMessage(`${PlayerTwoName} a gagné la dernière partie.`);
         setPlayerTwoScore(PlayerTwoScore += 1);
         setGameAction([
           ...GameAction,
-          `${PlayerTwoName} a poutré ${PlayerOneName}, ${PlayerTwo} à 0`]);
+          `${PlayerTwoName} a scoré ${PlayerOneName}, ${PlayerTwo} à 0`]);
         setGameNumber(GameNumber += 1);
         if (GamePlayed === 'duel commander') {
           setPlayerOne(20);
@@ -81,11 +81,11 @@ const App = () => {
     if (PlayerTwo === 0) {
       const result = confirm(`Hey ${PlayerTwoName} est-ce que tu as perdu?`);
       if (result === true) {
-        setMessage(`${PlayerOneName} a gagné la dernière game`);
+        setMessage(`${PlayerOneName} a gagné la dernière partie.`);
         setPlayerOneScore(PlayerOneScore += 1);
         setGameAction([
           ...GameAction,
-          `${PlayerOneName} a poutré ${PlayerTwoName}, ${PlayerOne} à 0`]);
+          `${PlayerOneName} a scoré ${PlayerTwoName}, ${PlayerOne} à 0`]);
         setGameNumber(GameNumber += 1);
         if (GamePlayed === 'duel commander') {
           setPlayerOne(20);
@@ -113,7 +113,7 @@ const App = () => {
         ><iframe src="https://giphy.com/embed/6tZsIBl8VMieveHImW" width="480" height="391" frameBorder="0" className="Pwned" allowFullScreen />
           <Modal.Actions>
             <Button color="green" inverted onClick={() => setOpen(false)}>
-              <Icon name="checkmark" /> Ok 3
+              <Icon name="checkmark" /> Ok
             </Button>
           </Modal.Actions>
         </Modal>;
@@ -186,7 +186,7 @@ const App = () => {
                   const result = confirm(`Tu concède ${PlayerOneName} ?`);
                   if (result === true) {
                     setPlayerTwoScore(PlayerTwoScore += 1);
-                    setMessage(`${PlayerOneName} a concédé la dernière game ! grosse merde !`);
+                    setMessage(`${PlayerOneName} a concédé la dernière game !`);
                     setGameAction([
                       ...GameAction,
                       `${PlayerOneName} concède face à ${PlayerTwoName}! `]);
@@ -243,6 +243,7 @@ const App = () => {
         )}
           />
           <div className="PlayerOne">
+
             <Icon
               name="chevron circle left"
               color="yellow"
@@ -320,7 +321,7 @@ const App = () => {
                 onClick={() => {
                   const result = confirm(`Tu concède ${PlayerTwoName} ?`);
                   if (result === true) {
-                    setMessage(`${PlayerTwoName} a concédé la dernière game ! tarlouz !`);
+                    setMessage(`${PlayerTwoName} a concédé la dernière game !`);
                     setPlayerOneScore(PlayerOneScore += 1);
                     setGameAction([
                       ...GameAction,
